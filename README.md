@@ -142,6 +142,12 @@ The second `failure-add` for one signature writes `.quorum/proposed/<signature>.
 node --test scripts/quorum.spec.js
 ```
 
+`scripts/e2e.spec.js` builds a tiny greenfield feature with Claude Code, closes it, then runs one small change through the same coordinator. It calls the `claude` CLI and is skipped unless you opt in:
+
+```bash
+QUORUM_E2E=1 node --test scripts/e2e.spec.js
+```
+
 The fixture at `examples/fixture` is a clean feature tree. Verify stays red until a snapshot names a check:
 
 ```bash

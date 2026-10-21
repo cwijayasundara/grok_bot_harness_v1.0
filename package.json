@@ -10,6 +10,7 @@
     "playwright": "^1.58.2"
   },
   "scripts": {
-    "test": "node --test scripts/quorum.spec.js"
+    "test": "node --test scripts/quorum.spec.js",
+    "e2e": "QUORUM_E2E=1 node --test scripts/e2e.spec.js"
   }
 }
