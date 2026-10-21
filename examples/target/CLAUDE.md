@@ -18,7 +18,7 @@ For alpha, the check is `node features/alpha/check.js`. Do not edit `.quorum/`.
 
 When this checkout has `team/kitchen.json`, it is one engineer's worktree on `eng/<name>`. Run `/quorum:sync` before the prompt when `.quorum/active.json` is absent. The coordinator takes one claimed signature and passes `--from` for the slice. It skips a snapshot whose job file is `closed: true`.
 
-If `.quorum/active.json` exists, the session repeats the merge line and stops. Ready means `/quorum:close`. `one-way door stops for the lead` means the lead's handoff, and not close yet. A red trace means the original session continues, or the human deletes `.quorum/active.json` outside the session when that session is gone.
+If `.quorum/active.json` exists at the start, the session repeats the merge line and stops. Ready means `/quorum:close`. `one-way door stops for the lead` means the lead's handoff, and not close yet. In the session that opened the job, a red trace means that session repeats the worker and the verifier until the trace passes. A later session does not dispatch. If the original session is gone, the human deletes `.quorum/active.json` outside the session.
 
 With no active job, fast-forward is `git merge --ff-only <integrationBranch>` outside Claude. Exit 0, including already up to date, still allows `/quorum:sync`. Unique commits with no active job stop there. Do not sync a stale tree.
 

@@ -14,5 +14,5 @@ The coordinator passes the feature, the door, the check command `node features/<
 2. If `features/<feature>/check.js` is missing, run `node "${CLAUDE_PLUGIN_ROOT}/scripts/quorum.js" check-init --root . --feature "<feature>"`. Replace that stub so the check fails when the feature is wrong. Do this before `job-open`. After `job-open` the check file is frozen.
 3. Prefer `job-open --from <slice>`. Do not pass `--intent` when `--from` is present. The slice body is the intent. Without a slice path, open the job with `node "${CLAUDE_PLUGIN_ROOT}/scripts/quorum.js" job-open --root .` and pass `--feature`, `--door two-way` or `--door one-way`, `--intent`, and `--check "node features/<feature>/check.js"`.
 4. Edit only `features/<feature>/`. Do not edit `notes/`, `team/`, or `.quorum/`. Do not run `land`, `lead-ack`, `claim`, or `tree-add`.
-5. Run `node "${CLAUDE_PLUGIN_ROOT}/scripts/quorum.js" verify --root .`. Red means edit again. Done means the trace says `"passed": true`.
+5. Run `node "${CLAUDE_PLUGIN_ROOT}/scripts/quorum.js" verify --root .`. Red means edit again. Done means the trace says `"passed": true`. If the coordinator spawns you again after a red verdict, start at step 1 and continue this same job until that trace passes.
 6. Stop there. Do not merge.

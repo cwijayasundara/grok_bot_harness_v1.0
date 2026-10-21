@@ -436,7 +436,10 @@ test("plugin agents keep the coordinator from editing", () => {
   assert.match(coordinator, /\/quorum:close/);
   assert.match(coordinator, /abandon/);
   assert.match(coordinator, /Do not spawn the worker/);
+  assert.match(coordinator, /While that verdict is red, spawn the worker again, then the verifier again/);
+  assert.equal(coordinator.includes("once more"), false);
   assert.equal(coordinator.includes("job-close"), false);
+  assert.match(worker, /spawns you again after a red verdict/);
   const jobCommand = readFileSync(path.join(rootDir, "commands", "job.md"), "utf8");
   assert.equal(jobCommand.includes('--check ""'), false);
   assert.match(jobCommand, /node features\/\$feature\/check\.js/);

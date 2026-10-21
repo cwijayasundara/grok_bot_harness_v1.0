@@ -117,7 +117,7 @@ A migration, a public API removal, or a data rewrite is a `one-way` door. `merge
    ```
 
 4. `scripts/quorum.js verify --root .` runs the feature-directory lint and the snapshot's check, then writes `.quorum/traces/latest.json`. A clean lint with no check is still red. The worker is not done without `"passed": true`. Inside Claude Code the skills expand `${CLAUDE_PLUGIN_ROOT}` to this plugin. The snapshot itself is `.quorum/snapshots/<id>.md` and is not refreshed mid-run.
-5. The verifier re-runs that command and `merge-status`. It does not edit.
+5. The verifier re-runs that command and `merge-status`. It does not edit. While the verdict is red, the same coordinator session spawns that worker again, then the verifier again, until the trace passes or the turn limit stops the loop. A later session that finds `.quorum/active.json` already there does not spawn either agent.
 6. A human merges. `merge-status` never merges. A one-way door without `--check` is refused. There is no overnight self-merge command. When the verdict is ready, the human runs `/quorum:close`. That removes `.quorum/active.json` and leaves the job record and the trace. The next slice can open.
 
 While `.quorum/active.json` exists, the Stop hook keeps the session going until the trace for that job is green, unless the hook is already a continuation (`stop_hook_active`). Abandon a job that is not ready by deleting `.quorum/active.json` outside the session. `job-close` refuses a red trace.
