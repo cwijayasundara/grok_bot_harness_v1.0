@@ -142,7 +142,7 @@ The second `failure-add` for one signature writes `.quorum/proposed/<signature>.
 node --test scripts/quorum.spec.js
 ```
 
-`scripts/e2e.spec.js` builds a tiny greenfield feature with Claude Code, closes it, then runs one small change through the same coordinator. It calls the `claude` CLI and is skipped unless you opt in:
+`scripts/e2e.spec.js` calls the `claude` CLI. One test builds a tiny feature and then changes it. Another writes `intent.md` and `architecture.md`, builds a TypeScript shopping-cart CLI with add, edit, and delete, then adds view by id. The cart stays at `examples/generated/cart`. Both tests are skipped unless you opt in:
 
 ```bash
 QUORUM_E2E=1 node --test scripts/e2e.spec.js
