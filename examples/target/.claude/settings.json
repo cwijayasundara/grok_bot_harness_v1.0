@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node features/*/check.js)",
+      "Bash(node *quorum.js *)"
+    ]
+  }
+}

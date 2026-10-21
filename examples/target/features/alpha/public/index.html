@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Alpha</title>
+  </head>
+  <body>
+    <button id="add" type="button">Add</button>
+    <p id="value">0</p>
+    <script>
+      const value = document.querySelector("#value");
+      document.querySelector("#add").addEventListener("click", () => {
+        value.textContent = String(Number(value.textContent) + 1);
+      });
+    </script>
+  </body>
+</html>

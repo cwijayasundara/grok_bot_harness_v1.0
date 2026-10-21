@@ -1,0 +1,11 @@
+{
+  "name": "quorum",
+  "displayName": "Quorum",
+  "version": "0.2.0",
+  "description": "Agent factory for Claude Code: a scanner, a coordinator that only dispatches, one coding worker per grouped job, one verifier, and a human sample.",
+  "author": {
+    "name": "grok-bot harness"
+  },
+  "license": "MIT",
+  "keywords": ["software-factory", "verification", "quorum"]
+}

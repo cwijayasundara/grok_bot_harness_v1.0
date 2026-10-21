@@ -1,0 +1,5 @@
+{
+  "name": "quorum-target",
+  "private": true,
+  "type": "module"
+}
